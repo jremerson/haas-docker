@@ -16,7 +16,7 @@ services:
       - PUID=1000
 
   home-assistant:
-    image: homeassistant/raspberrypi-homeassistant:latest
+    image: homeassistant/home-assistant:latest
     container_name: "hass"
     ports:
       - 8123:8123
