@@ -1,0 +1,27 @@
+version: '2.1'
+
+services:
+  muximux:
+    image: linuxserver/muximux:latest
+    container_name: muximux
+    restart: always
+    network_mode: "host"  
+    ports:
+      - 8888:80
+    volumes:
+      - /home/$USER/docker_files/muximux:/config
+    environment:
+      - TZ=America/New_York
+      - PGID=1000
+      - PUID=1000
+
+  home-assistant:
+    image: homeassistant/home-assistant:latest
+    container_name: "hass"
+    ports:
+      - 8123:8123
+    volumes:
+      - /home/$USER/docker_files/homeassistant/config:/config
+    network_mode: "host"
+    environment:
+      - TZ=America/New_York
